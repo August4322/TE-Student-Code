@@ -15,7 +15,9 @@ public class Examples {
 		
 		// variable names should start with a lower case letter and use camelCase
 		int ageOfAdulthood = 18;
-		
+		int numberOfPlants = 7;
+		String myName = "August";
+
 		// literal values of type char appear between single quotes
 		char theFirstLetter = 'a';
 		
@@ -42,8 +44,8 @@ public class Examples {
 		int twentySix = 0x1A;
 		
 		// String literals appear between double quotes
-		String firstName = "John";
-		String lastName = "Doe";
+		String firstName = "August";
+		String lastName = "Newman";
 		// the + operator is used for String concatenation
 		String fullName = firstName + " " + lastName;
 		System.out.println("first name: "+firstName);
@@ -94,7 +96,13 @@ public class Examples {
 		
 		remainder = 8 % 4;
 		System.out.println("The remainder of dividing 8 by 4 is "+remainder);
-		
+
+		remainder = 10 % 2;
+		System.out.println("The remainder of dividing 10 by 2 is "+remainder); // remainder being 0 denotes number is even
+
+		remainder = 11 % 2;
+		System.out.println("The remainder of dividing 11 by 2 is "+remainder); // remainder being 1 denotes number is odd
+
 		// ***********************
 		// ESCAPE CHARACTERS
 		// ***********************
