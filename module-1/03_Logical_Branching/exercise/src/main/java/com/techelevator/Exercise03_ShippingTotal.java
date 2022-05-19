@@ -22,9 +22,13 @@ public class Exercise03_ShippingTotal {
     calculateShippingTotal(45) ➔ 23.75
      */
     public double calculateShippingTotal(int weightPounds) {
+        if (weightPounds <= MAX_WEIGHT_POUNDS) {
+            return UP_TO_40_LB_RATE * weightPounds;
+        } else if (weightPounds > MAX_WEIGHT_POUNDS) {
+            return (UP_TO_40_LB_RATE * MAX_WEIGHT_POUNDS) + (OVER_40_LB_RATE * (weightPounds - MAX_WEIGHT_POUNDS));
+        }
         return 0;
     }
-
     /*
     Scamper Shipping Company now allows customers to provide a discount code to give them 10% off of their order.
     Implement the logic to calculate the correct shipping rate when provided a weight in pounds and a boolean value for hasDiscount.
@@ -38,7 +42,17 @@ public class Exercise03_ShippingTotal {
     calculateShippingTotal(45, true) ➔ 21.375
      */
     public double calculateShippingTotal(int weightPounds, boolean hasDiscount) {
-        return 0;
+        if (hasDiscount)
+            if (weightPounds <= MAX_WEIGHT_POUNDS) {
+            return (UP_TO_40_LB_RATE - (UP_TO_40_LB_RATE * 0.10)) * weightPounds;
+        } else {
+            return ((UP_TO_40_LB_RATE * MAX_WEIGHT_POUNDS) - ((UP_TO_40_LB_RATE * MAX_WEIGHT_POUNDS) * 0.10)) + ((OVER_40_LB_RATE - (OVER_40_LB_RATE * 0.10)) * (weightPounds - MAX_WEIGHT_POUNDS));
+        } else if (weightPounds <= MAX_WEIGHT_POUNDS) {
+                return UP_TO_40_LB_RATE * weightPounds;
+            } else if (weightPounds > MAX_WEIGHT_POUNDS) {
+                return (UP_TO_40_LB_RATE * MAX_WEIGHT_POUNDS) + (OVER_40_LB_RATE * (weightPounds - MAX_WEIGHT_POUNDS));
+            }
+            return 0;
     }
 
     /*
@@ -53,6 +67,11 @@ public class Exercise03_ShippingTotal {
     calculateShippingTotal(45, 0.2) ➔ 19.0
      */
     public double calculateShippingTotal(int weightPounds, double discountPercentage) {
-        return 0;
+        if (weightPounds <= MAX_WEIGHT_POUNDS) {
+            return (UP_TO_40_LB_RATE - (UP_TO_40_LB_RATE * discountPercentage)) * weightPounds;
+        } else {
+            return ((UP_TO_40_LB_RATE * MAX_WEIGHT_POUNDS) - ((UP_TO_40_LB_RATE * MAX_WEIGHT_POUNDS) * discountPercentage)) + ((OVER_40_LB_RATE - (OVER_40_LB_RATE * discountPercentage)) * (weightPounds - MAX_WEIGHT_POUNDS));
+        }
     }
+
 }

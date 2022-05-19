@@ -2,6 +2,9 @@ package com.techelevator;
 
 public class Examples {
 
+	//method: (named code block)
+	//access modifier (public, private, and protected (also static)) | return type (int, void, etc.) | name | parameters
+
 	public static void main(String[] args) {
 
 		// declaration statement for a variable named "result" of type boolean
@@ -16,21 +19,21 @@ public class Examples {
 		 !=  Not equal to
 		*/
 		result = (2 == 2);
-		System.out.println("2 == 2 : " + result);
+		System.out.println("2 == 2 : " + result); // true
 		result = (2 == 3);
-		System.out.println("2 == 3 : " + result);
+		System.out.println("2 == 3 : " + result); // false
 		result = ('a' == 'a');
-		System.out.println("'a' == 'a' : " + result);
+		System.out.println("'a' == 'a' : " + result); // true
 		result = ('a' == 'b');
-		System.out.println("'a' == 'b' : " + result);
+		System.out.println("'a' == 'b' : " + result); // false
 		result = (2 != 2);
-		System.out.println("2 != 2 : " + result);
+		System.out.println("2 != 2 : " + result); // false
 		result = (2 != 3);
-		System.out.println("2 != 3 : " + result);
+		System.out.println("2 != 3 : " + result); // true
 		result = ('a' != 'a');
-		System.out.println("'a' != 'a' : " + result);
+		System.out.println("'a' != 'a' : " + result); // false
 		result = ('a' != 'b');
-		System.out.println("'a' != 'b' : " + result);
+		System.out.println("'a' != 'b' : " + result); // true
 		System.out.println();
 
 		/*
@@ -95,7 +98,7 @@ public class Examples {
 
 		int value = 100;
 		result = (value > 200) || (value < 500);
-		System.out.println("(value > 200) || (value < 500) : " + result);
+		System.out.println("(value > 200) || (value < 500) : " + result); // true
 
 		result = (value > 200) && (value < 500);
 		System.out.println("(value > 200) && (value < 500) : " + result);

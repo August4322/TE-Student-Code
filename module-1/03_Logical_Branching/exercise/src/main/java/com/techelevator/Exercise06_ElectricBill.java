@@ -24,7 +24,9 @@ public class Exercise06_ElectricBill {
     calculateElectricBill(110) ➔ 22.5
      */
     public double calculateElectricBill(double unitsUsed) {
-        return 0;
+        if (unitsUsed > EXCESS_UNITS_LIMIT) {
+            return (BASE_RATE * EXCESS_UNITS_LIMIT) + ((unitsUsed - EXCESS_UNITS_LIMIT) * EXCESS_RATE);
+        } else return (BASE_RATE * unitsUsed);
     }
 
     /*
@@ -39,6 +41,18 @@ public class Exercise06_ElectricBill {
     calculateElectricBill(110, true) ➔ 21.375
      */
     public double calculateElectricBill(double unitsUsed, boolean hasRenewableEnergy) {
+        if (hasRenewableEnergy) {
+            if (unitsUsed > EXCESS_UNITS_LIMIT) {
+                return (BASE_RATE * EXCESS_UNITS_LIMIT) + ((unitsUsed - EXCESS_UNITS_LIMIT) * EXCESS_RATE) - (((BASE_RATE * EXCESS_UNITS_LIMIT) + ((unitsUsed - EXCESS_UNITS_LIMIT) * EXCESS_RATE)) * .05);
+            } else if (unitsUsed <= EXCESS_UNITS_LIMIT) {
+                return ((BASE_RATE * unitsUsed) - ((BASE_RATE * unitsUsed) * 0.05));
+            }
+        } else if (!hasRenewableEnergy) {
+            if (unitsUsed > EXCESS_UNITS_LIMIT) {
+                return (EXCESS_RATE * (unitsUsed - EXCESS_UNITS_LIMIT)) + (BASE_RATE * EXCESS_UNITS_LIMIT);
+            } else return (BASE_RATE * unitsUsed);
+
+        }
         return 0;
     }
 
@@ -63,6 +77,19 @@ public class Exercise06_ElectricBill {
     calculateElectricBill(110, 120) ➔ -2.0
      */
     public double calculateElectricBill(double unitsUsed, double unitsReturned) {
+        if (unitsReturned > unitsUsed) {
+            return (unitsUsed - unitsReturned) * BASE_RATE;
+        } else if (unitsReturned > 0)
+            if (unitsUsed > EXCESS_UNITS_LIMIT) {
+                return ((BASE_RATE * EXCESS_UNITS_LIMIT) + ((unitsUsed - EXCESS_UNITS_LIMIT) * EXCESS_RATE)) - ((BASE_RATE * EXCESS_UNITS_LIMIT) + (((unitsUsed - EXCESS_UNITS_LIMIT) * EXCESS_RATE)) * .05);
+            } else if (unitsUsed <= EXCESS_UNITS_LIMIT) {
+                return ((BASE_RATE * unitsUsed) - ((BASE_RATE * unitsUsed) * (unitsReturned * 0.05)));
+            } else if (unitsReturned <= 0)
+                if (unitsUsed > EXCESS_UNITS_LIMIT) {
+                    return (EXCESS_RATE * (unitsUsed - EXCESS_UNITS_LIMIT) + (BASE_RATE * EXCESS_UNITS_LIMIT));
+                } else return (BASE_RATE * unitsUsed);
+
         return 0;
     }
+
 }
