@@ -82,9 +82,15 @@ public class Exercise07_StoreHours {
                 return true;
             } else if (currentDay == 'S' && currentHour >= 9 && currentHour < 15) {
                 return true;
-            } else return currentHour >= 8 && currentHour < 17;
+            } else if ((currentDay == 'M' || currentDay == 'F') && currentHour >= 8 && currentHour < 17) {
+                return true;
+            }
         } else if (currentDay == 'S') {
                 return false;
-            } else return currentHour >= 8 && currentHour < 17;
+            } else if (currentHour >= 8 && currentHour < 17) {
+                return true;
+            }
+            return false;
+
     }
 }
