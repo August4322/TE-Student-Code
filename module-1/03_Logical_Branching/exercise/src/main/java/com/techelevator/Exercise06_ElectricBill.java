@@ -79,17 +79,14 @@ public class Exercise06_ElectricBill {
     public double calculateElectricBill(double unitsUsed, double unitsReturned) {
         if (unitsReturned > unitsUsed) {
             return (unitsUsed - unitsReturned) * BASE_RATE;
-        } else if (unitsReturned > 0)
+        } else if (unitsReturned > 0) {
             if (unitsUsed > EXCESS_UNITS_LIMIT) {
                 return ((BASE_RATE * EXCESS_UNITS_LIMIT) + ((unitsUsed - EXCESS_UNITS_LIMIT) * EXCESS_RATE)) - ((BASE_RATE * EXCESS_UNITS_LIMIT) + (((unitsUsed - EXCESS_UNITS_LIMIT) * EXCESS_RATE)) * .05);
-            } else if (unitsUsed <= EXCESS_UNITS_LIMIT) {
-                return ((BASE_RATE * unitsUsed) - ((BASE_RATE * unitsUsed) * (unitsReturned * 0.05)));
-            } else if (unitsReturned <= 0)
+            } else return ((BASE_RATE * unitsUsed) - ((BASE_RATE * unitsUsed) * (unitsReturned * 0.05)));
+        } else if (unitsReturned <= 0)
                 if (unitsUsed > EXCESS_UNITS_LIMIT) {
                     return (EXCESS_RATE * (unitsUsed - EXCESS_UNITS_LIMIT) + (BASE_RATE * EXCESS_UNITS_LIMIT));
-                } else return (BASE_RATE * unitsUsed);
-
-        return 0;
+                } return (BASE_RATE * unitsUsed);
     }
 
 }
