@@ -42,13 +42,13 @@ class DiscountCalculator {
 
         String pricesInput = scanner.nextLine();
         String[] prices = pricesInput.split(" ");
-        
+
         for(int i = 0; i < prices.length; i++) {
             double priceConverted = Double.parseDouble(prices[i]);
 
             double newPrice = priceConverted * (1.0 - (discount/100));
 
-            System.out.println("Original price is $" + prices[i] + " but discounted to "+ newPrice);
+            System.out.println("Original price is $" + prices[i] + " but discounted to $"+ String.format("%.2f",newPrice));
         }
 
 
