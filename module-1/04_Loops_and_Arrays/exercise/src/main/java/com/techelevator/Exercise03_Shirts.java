@@ -64,8 +64,17 @@ public class Exercise03_Shirts {
     placeRequest(['M', 'M', 'L']) → false
     placeRequest([]) → false
      */
-    public boolean placeRequest(char[] order) {
 
-        return false; 
+
+
+    public boolean placeRequest(char[] order) {
+        boolean smallPresent = false;
+
+        for (int i = 0; i < order.length; i++) {
+            if (order[i] == 'S') {
+                smallPresent = true;
+            }
+        }
+        return smallPresent;
     }
 }
