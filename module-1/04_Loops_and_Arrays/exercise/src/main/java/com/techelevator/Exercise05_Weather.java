@@ -49,12 +49,14 @@ public class Exercise05_Weather {
 	hottestDay([55]) → 55
     */
     public int hottestDay(int[] dailyHighs) {
-        int hottestDay = 0;
+        int hottestDay = dailyHighs[0];
 
         for (int i = 0; i < dailyHighs.length; i++) {
-
+            if (hottestDay < dailyHighs[i]) {
+                hottestDay = dailyHighs[i];
+            }
         }
-        return 0;
+        return hottestDay;
     }
 
     /*
@@ -72,6 +74,15 @@ public class Exercise05_Weather {
 	fixTemperatures([]) → []
      */
     public int[] fixTemperatures(int[] temperatures) {
-        return new int[] {};
+        int[] correctedTemperatures = new int[temperatures.length];
+
+        for (int i = 0; i < temperatures.length; i ++) {
+            if (temperatures[i] % 2 == 1) {
+                correctedTemperatures[i] = temperatures[i];
+            } else if (temperatures[i] % 2 == 0) {
+                correctedTemperatures[i] = temperatures[i] + 2;
+            }
+        }
+        return correctedTemperatures;
     }
 }

@@ -42,8 +42,18 @@ public class Exercise04_Cards {
     discardFirstCard(["K-C", "Q-D", "J-H", "10-S", "Q-C"]) → ["Q-D", "J-H", "10-S", "Q-C"]
      */
     public String[] discardFirstCard(String[] hand) {
+        String[] handWithoutFirstCard = new String[hand.length - 1];
 
-        return new String[] {};
+        for (int i = 0; i < hand.length; i ++) {
+            if (i == 0) {
+                continue;
+            } else if (i != 0) {
+                handWithoutFirstCard[i] = hand[i];
+            }
+
+        }
+
+        return handWithoutFirstCard;
     }
 
     /*
