@@ -9,16 +9,16 @@ public class DecimalToBinary {
 		//Receive user input
 		Scanner scanner = new Scanner(System.in);
 
-		//Prompt the user to input a series of integers
-		System.out.println("Please enter the integers: ");
-		String integerInput = scanner.nextLine();
-		int integer = Integer.parseInt(integerInput);
+		//Prompt the user to input a series of decimals
+		System.out.println("Please enter the decimal values: ");
+		String decimalInput = scanner.nextLine();
+		String[] decimals = decimalInput.split(" ");
 
-
-
-
-		//Integer.parseToBinary()
-		//Integer.toBinaryString();
+		//Convert to binary
+		for (int i = 0; i < decimals.length; i++) {
+			int decimalsToBinary = Integer.parseInt(decimals[i]);
+			String binary = Integer.toBinaryString(decimalsToBinary);
+			System.out.println(decimalsToBinary + " in binary is "+ binary);
+		}
 	}
-
 }
