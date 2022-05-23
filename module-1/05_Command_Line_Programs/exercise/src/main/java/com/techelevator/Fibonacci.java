@@ -15,27 +15,25 @@ public class Fibonacci {
 		int number = Integer.parseInt(numberInput);
 
 		//Establish 0 and 1
-		int fibSeq1 = 0;
-		int fibSeq2 = 1;
+		int prevNum = 0;
+		int currentNum = 1;
+		int nextNum = prevNum + currentNum;
 
 		System.out.println("Fibonacci sequence up to " + number + ":");
 
-		if (number <= 0) {
-			System.out.println("0, 1");
-		} else if (number == 1) {
-			System.out.println("0, 1, 1"); }
+		//Print Fibonacci Sequence if number is 0, 1, or negative
+		System.out.print(prevNum);
 
-		//Print Fibonacci Sequence up (and/or including) to number
-		for (int i = 0; i <= number; i++) {
-			if (fibSeq1 <= number) {
-				System.out.print(fibSeq1 + ", ");
+		//Print Fibonacci Sequence up to (or including) number
+		while (nextNum <= number) {
+			System.out.print(", " + currentNum);
 
-				int fibSeqCont = fibSeq1 + fibSeq2;
-				fibSeq1 = fibSeq2;
-				fibSeq2 = fibSeqCont;
+			nextNum = prevNum + currentNum;
+			prevNum = currentNum;
+			currentNum = nextNum;
 
-			}
 		}
 	}
 }
+
 

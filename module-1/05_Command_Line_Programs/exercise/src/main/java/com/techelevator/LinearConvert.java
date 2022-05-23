@@ -19,12 +19,12 @@ public class LinearConvert {
 		String lengthType = scanner.nextLine();
 
 		//Determine which type, then apply appropriate formula
-		if (lengthType.equalsIgnoreCase("m")) {
-			double meter = length * 0.3048;
-			System.out.println(lengthInput + lengthType + " is " + meter + "f.");
-		} else if (lengthType.equalsIgnoreCase("f")) {
-			double feet = length * 3.2808399;
-			System.out.println(lengthInput + lengthType + " is " + feet + "m.");
+		if (lengthType.equalsIgnoreCase("f")) {
+			int feetToMeter = (int)(length * 0.3048);
+			System.out.println(lengthInput + lengthType + " is " + feetToMeter + "m.");
+		} else if (lengthType.equalsIgnoreCase("m")) {
+			int meterToFeet = (int)(length * 3.2808399);
+			System.out.println(lengthInput + lengthType + " is " + meterToFeet + "f.");
 		} else {
 			System.out.println("Please enter a valid degree type.");
 		}

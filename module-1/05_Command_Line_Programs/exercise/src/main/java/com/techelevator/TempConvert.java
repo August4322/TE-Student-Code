@@ -20,10 +20,10 @@ public class TempConvert {
 
 		//Determine which type, then apply appropriate formula
 		if (degreeType.equalsIgnoreCase("C")) {
-			double fahrenheit = (temp * 1.8) + 32;
+			int fahrenheit = (int)((temp * 1.8) + 32);
 			System.out.println(tempInput + degreeType + " is " + fahrenheit + "F.");
 		} else if (degreeType.equalsIgnoreCase("F")) {
-			double celsius = (temp - 32) / 1.8;
+			int celsius = (int)((temp - 32) / 1.8);
 			System.out.println(tempInput + degreeType + " is " + celsius + "C.");
 		} else {
 			System.out.println("Please enter a valid degree type.");
