@@ -20,16 +20,22 @@ public class Fibonacci {
 
 		System.out.println("Fibonacci sequence up to " + number + ":");
 
+		if (number <= 0) {
+			System.out.println("0, 1");
+		} else if (number == 1) {
+			System.out.println("0, 1, 1"); }
+
 		//Print Fibonacci Sequence up (and/or including) to number
-		while (fibSeq1 <= number) {
-			System.out.print(fibSeq1 + ", ");
+		for (int i = 0; i <= number; i++) {
+			if (fibSeq1 <= number) {
+				System.out.print(fibSeq1 + ", ");
 
-			int fibSeqCont = fibSeq1 + fibSeq2;
-			fibSeq1 = fibSeq2;
-			fibSeq2 = fibSeqCont;
-			System.out.println(fibSeqCont);
+				int fibSeqCont = fibSeq1 + fibSeq2;
+				fibSeq1 = fibSeq2;
+				fibSeq2 = fibSeqCont;
+
+			}
 		}
-
 	}
 }
 
