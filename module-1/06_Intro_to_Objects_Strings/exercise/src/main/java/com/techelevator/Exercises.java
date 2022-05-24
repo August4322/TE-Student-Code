@@ -315,6 +315,7 @@ public class Exercises {
 	 */
 	public boolean doubleX(String str) {
 		int isXThere = str.indexOf("x");
+
 		if (isXThere == -1) {
 			return false;
 		} else if (isXThere + 1 >= str.length()) {
@@ -423,7 +424,7 @@ public class Exercises {
 		String removedYak = "";
 
 		for (int i = 0; i <str.length(); i ++) {
-			if (i + 2 < str.length() && str.charAt(i) == 'y' && str.charAt( i +2 ) == 'k') {
+			if (i + 2 < str.length() && str.charAt(i) == 'y' && str.charAt( i + 2 ) == 'k') {
 				i = i + 2;
 			} else removedYak += str.charAt(i);
 		}
