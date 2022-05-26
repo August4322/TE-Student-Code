@@ -346,26 +346,27 @@ public class Exercises {
 		//Initialize Map
 		Map<String, Integer> last2ElectricBoogaloo = new HashMap<>();
 
-		//Initialize integers
-		int instancesOfLast2 = 0;
-
 		//Iterate through the string
-		for (int i = 0; i < words.length - 1; i++) {
-			//Initialize a string with the last two characters in a string
-			String keyOfLast2 = words[i].substring(words[i].length() - 2);
+		for (int i = 0; i < words.length; i++) {
 			//Check if the word length is too small
 			if (words[i].length() <= 2) {
 				//Add to Map
-				last2ElectricBoogaloo.put(keyOfLast2, 0);
-				//If length is fine look for iterations of the last two characters
+				last2ElectricBoogaloo.put(words[i], 0);
+			//If length is fine look for iterations of the last two characters
 			} else {
-				String lookThroughString = words[i].substring(i, i + 2);
-				if (lookThroughString.equals(keyOfLast2)) {
-					//if you find iterations of the last two characters add to the count
-					instancesOfLast2++;
+				//Initialize integers
+				int instancesOfLast2 = 0;
+				//Initialize a string with the last two characters in a string
+				String keyOfLast2 = words[i].substring(words[i].length() - 2);
+				for (int j = 0; j < words[i].length() -2; j ++) {
+					String lookThroughString = words[i].substring(j, j + 2);
+					if (lookThroughString.equals(keyOfLast2)) {
+						//if you find iterations of the last two characters add to the count
+						instancesOfLast2 ++;
+					}
 				}
 				//Add to Map
-				last2ElectricBoogaloo.put(keyOfLast2, instancesOfLast2);
+				last2ElectricBoogaloo.put(words[i], instancesOfLast2);
 			}
 		}
 		//Return Map
@@ -373,6 +374,8 @@ public class Exercises {
 	}
 
 	/*
+	***The Original***
+
 	public int last2(String str) {
 
 		if (str.length() < 2) return 0;
