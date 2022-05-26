@@ -171,25 +171,21 @@ public class Exercises {
 	}
 
 		/*
-		int listOneSize = listOne.size();
-		int listTwoSize = listTwo.size();
 
-		if (listOneSize == listTwoSize) {
-			for (Integer addToInterWovenList : listOne) {
-				interwovenLists.add(listOne.get(addToInterWovenList));
-				for (Integer addToInterWovenList2 : listTwo) {
-					interwovenLists.add(listOne.get(addToInterWovenList2));
-				}
+		// Hint 1: How to check if the list is long enough that we can retrieve a value from it
+		// Hint 2: How many times will we need to run through the for loop if stringList2 is longer or if stringList is longer?
+
+		//Below is not correct, just playing around so far:
+
+		for (int i = 0; i < stringList2.size(); i++) {
+			if (stringList.get(i) != null) {
+				System.out.println(stringList.get(i));
 			}
-		} else if (listOneSize > listTwoSize) {
-			for (Integer addToInterwovenList : listOne) {
-				interwovenLists.add(addToInterwovenList);
+			if (stringList2.get != null) {
+				System.out.println(stringList2.get(i));
 			}
-		} else if (listOneSize < listTwoSize) {
-			for (Integer addToInterwovenList : listTwo) {
-				interwovenLists.add(addToInterwovenList);
-			}
-		} return interwovenLists;
+		}
+
 		*/
 
 
