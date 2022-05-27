@@ -39,4 +39,8 @@ public class Starship {
     public void setCrew(List<CrewMember> crew){
         this.crew = crew;
     }
+
+    public void fly() {
+        System.out.println("We're flying through space!");
+    }
 }
