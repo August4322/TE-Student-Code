@@ -19,5 +19,10 @@ public class Main {
         enterprise.setCrew(crew);
 
         enterprise.fly();
+
+        CrewMember member = new CrewMember("Christopher", "First Mate");
+        System.out.println(member.getName());
+
+
     }
 }
