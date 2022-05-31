@@ -23,5 +23,11 @@ public class Application {
         buyoutAuction.placeBid(new Bid("Rick Astley", 1300));
         buyoutAuction.placeBid(new Bid("Christopher", 100));
 
+
+        ReserveAuction reserveAuction = new ReserveAuction("Fancy Rock", 10);
+        reserveAuction.placeBid(new Bid("Josh", 1));
+        reserveAuction.placeBid(new Bid("Fonz", 5));
+        reserveAuction.placeBid(new Bid("Rick Astley", 10));
+        reserveAuction.placeBid(new Bid("Christopher", 100));
     }
 }

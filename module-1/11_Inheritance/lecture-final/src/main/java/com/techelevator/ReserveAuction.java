@@ -14,7 +14,13 @@ public class ReserveAuction extends Auction{
 
         //this checks that each bid meets the minimum reserve price
         // and if it doesn't then the bid is ignored
+        boolean isValidBid = false;
+        if(offeredBid.getBidAmount() >= reservePrice) {
+                isValidBid = super.placeBid(offeredBid);
+        } else {
+            System.out.println("Offer is not valid - must meet minimum reserve price");
+         }
 
-        return false;
+        return isValidBid;
     }
 }
