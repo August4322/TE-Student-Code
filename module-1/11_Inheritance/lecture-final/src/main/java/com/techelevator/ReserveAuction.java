@@ -11,7 +11,7 @@ public class ReserveAuction extends Auction{
 
     @Override
     public boolean placeBid(Bid offeredBid) {
-
+        boolean isReservedBid = false;
         //this checks that each bid meets the minimum reserve price
         // and if it doesn't then the bid is ignored
         boolean isValidBid = false;

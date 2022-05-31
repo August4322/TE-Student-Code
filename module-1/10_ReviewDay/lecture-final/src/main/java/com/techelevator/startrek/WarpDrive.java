@@ -1,4 +1,4 @@
-package com.techelevator.startrek;
+pubpackage com.techelevator.startrek;
 
 public class WarpDrive {
 
