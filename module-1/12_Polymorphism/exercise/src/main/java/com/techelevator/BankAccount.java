@@ -1,6 +1,6 @@
 package com.techelevator;
 
-public class BankAccount {
+public class BankAccount implements Accountable{
 
     private String accountHolderName;
     private String accountNumber;
@@ -37,6 +37,17 @@ public class BankAccount {
 
     public int withdraw(int amountToWithdraw) {
         balance = balance - amountToWithdraw;
+        return balance;
+    }
+
+
+    //Add a new transfer method
+    public int transferTo(BankAccount destinationAccount, int transferAmount) {
+        //Withdraw transfer amount from first account
+        withdraw(transferAmount);
+        //Deposit transfer amount into the destination account
+        destinationAccount.deposit(transferAmount);
+        //Return the balance of the first account
         return balance;
     }
 
