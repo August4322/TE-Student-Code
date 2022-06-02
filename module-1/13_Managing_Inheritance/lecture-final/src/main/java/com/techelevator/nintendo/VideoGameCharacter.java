@@ -1,6 +1,6 @@
 package com.techelevator.nintendo;
 
-public class VideoGameCharacter implements Runnable {
+public abstract class VideoGameCharacter implements Runnable {
 
     private int points;
     private int life;
@@ -43,5 +43,8 @@ public class VideoGameCharacter implements Runnable {
     protected void doSecretMove() {
         System.out.println("Secret move!");
     }
+
+    // every class that inherits from VideoGameCharacter has to provide an implementation for doSpecialMove();
+    protected abstract void doSpecialMove();
 
 }

@@ -16,4 +16,8 @@ public class FarmAnimal implements Singable {
 		return sound;
 	}
 
+	public void eat() {
+		System.out.println("I eat grain");
+	}
+
 }

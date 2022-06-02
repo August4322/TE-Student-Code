@@ -11,4 +11,9 @@ public class PrincessPeach extends VideoGameCharacter implements Hoverable {
         // this code block is the implementation that the interface requires
         System.out.println("I am Princess Peach and I'm hovering");
     }
+
+    @Override
+    public void doSpecialMove() {
+        System.out.println("Princess Peach special move");
+    }
 }

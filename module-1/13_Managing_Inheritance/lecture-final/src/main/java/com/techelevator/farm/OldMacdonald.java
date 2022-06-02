@@ -6,7 +6,14 @@ import com.techelevator.nintendo.VideoGameCharacter;
 public class OldMacdonald {
 	public static void main(String[] args) {
 
-		VideoGameCharacter mario = new Mario();
+		// 1. Force FarmAnimal to be inherited. Do not allow it to be instantiated on its own
+		// 2. Change the eat() method in FarmAnimal to force any inheriting class to provide a custom implementation
+		// 3. Create a cat class. Cats are unique. Don't let anyone else be allowed to extend the cat class
+		// 4. Don't let any child classes of cow be able to override moo()
+
+
+
+
 
 		//You cannot call protected methods or proprerties from other packages unless you are a descendant of the class in question
 		//mario.doSecretMove();

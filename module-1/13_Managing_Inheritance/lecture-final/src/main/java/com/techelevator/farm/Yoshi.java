@@ -17,4 +17,9 @@ public class Yoshi extends VideoGameCharacter {
         // VideoGameCharacter he inherits all protected methods and properties
         this.doSecretMove();
     }
+
+    @Override
+    public void doSpecialMove() {
+        System.out.println("Yoshi special move");
+    }
 }

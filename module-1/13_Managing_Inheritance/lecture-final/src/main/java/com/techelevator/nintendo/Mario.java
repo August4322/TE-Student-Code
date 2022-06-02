@@ -47,6 +47,15 @@ public class Mario extends VideoGameCharacter{
         return life;
     }
 
+    public final void doExclusiveMarioMove() {
+        System.out.println("Only I can define how to do this. No one can override it.");
+    }
+
+    @Override
+    public void doSpecialMove() {
+        System.out.println("Mario special move");
+    }
+
     @Override
     public String toString() {
         return "It's a me a mario!";

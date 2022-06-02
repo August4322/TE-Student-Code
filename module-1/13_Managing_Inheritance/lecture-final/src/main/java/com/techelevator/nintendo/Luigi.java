@@ -19,4 +19,9 @@ public class Luigi extends VideoGameCharacter implements Hoverable, SuperJumpabl
     public void superJump() {
         System.out.println("Super Jump!");
     }
+
+    @Override
+    public void doSpecialMove() {
+        System.out.println("Luigi special move");
+    }
 }

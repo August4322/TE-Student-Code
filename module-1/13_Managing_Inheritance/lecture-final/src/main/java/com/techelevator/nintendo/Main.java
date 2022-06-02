@@ -21,13 +21,30 @@ public class Main {
          */
         mario.doSecretMove();
 
-        /*
-            You can inherit from / extend classes indefinitely as long as the parent class is not final
-            ArrayList is not final, so we can extend it - take a look at AdamArrayList in com.techelevator.farm
-            But - for instance - the String type is final, and cannot be extended
+        /********************** PREVENTING INHERITANCE *****************************
+        2. FINAL - You can inherit from / extend classes indefinitely as long as the parent class is not final
+                    ArrayList is not final, so we can extend it - take a look at AdamArrayList in com.techelevator.farm
+                    But - for instance - the String type is final, and cannot be extended.
+                    Example: SlimMario is final, and MGMario cannot extend the class
+
+                    We can also make individual methods final. See public final void doExclusiveMarioMove() in Mario vs LittleMario.
+                    But we can still use it
+         */
+        LittleMario lm = new LittleMario();
+        lm.doExclusiveMarioMove();
+
+        /*************************** REQUIRE INHERITANCE ****************************
+         *  3. ABSTRACT - similar to interfaces, we expect a concrete class to provide an implementation.
+         *                If we make a class abstract we cannot instantiate it. It can only be inherited
+
+                        We can also apply it to methods. every class that inherits from VideoGameCharacter
+                        has to provide an implementation for doSpecialMove();
+
+                        If any class has an abstract method the class itself has to be declared as abstract
          */
 
-
+        // this doesn't work because VideoGameCharacter is abstract
+       // VideoGameCharacter myCharacter = new VideoGameCharacter("");
 
         List<Runnable> runners = new ArrayList<>();
         runners.add(mario);
@@ -43,6 +60,9 @@ public class Main {
         characters.add(luigi);
         characters.add(peach);
 
+        for(VideoGameCharacter character : characters) {
+            character.doSpecialMove();
+        }
 
 
 

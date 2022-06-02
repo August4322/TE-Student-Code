@@ -1,11 +1,11 @@
 package com.techelevator.nintendo;
 
-public class LittleMario implements Hoverable{
+public class LittleMario extends Mario{
+/*
+   @Override
+   public void doExclusiveMarioMove() {
+       // cannot do this, it is final
+   }
 
-    public void hover() {
-
-    }
-
-    public void run() {
-    }
+ */
 }
