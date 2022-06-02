@@ -1,6 +1,6 @@
 package com.techelevator.farm;
 
-public class FarmAnimal implements Singable {
+public abstract class FarmAnimal implements Singable {
 	private String name;
 	private String sound;
 
@@ -16,8 +16,5 @@ public class FarmAnimal implements Singable {
 		return sound;
 	}
 
-	public void eat() {
-		System.out.println("I eat grain");
-	}
-
+	public abstract void eat();
 }

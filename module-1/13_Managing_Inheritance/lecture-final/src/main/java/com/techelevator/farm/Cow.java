@@ -14,7 +14,12 @@ public class Cow extends FarmAnimal implements Sellable {
 		return price;
 	}
 
-	public void moo() {
+	public final void moo() {
 		System.out.println("Moo");
+	}
+
+	@Override
+	public void eat() {
+		System.out.println("I eat grass");
 	}
 }

@@ -15,11 +15,11 @@ public class OldMacdonald {
 
 
 
-		//You cannot call protected methods or proprerties from other packages unless you are a descendant of the class in question
+		//You cannot call protected methods or properties from other packages unless you are a descendant of the class in question
 		//mario.doSecretMove();
 
 		Singable[] singables =
-				new Singable[] {new Cow(), new Chicken(), new Pig(), new Tractor()};
+				new Singable[] {new Cow(), new Chicken(), new Pig(), new Tractor(), new Cat()};
 
 		for (Singable singable : singables) {
 			String name = singable.getName();
