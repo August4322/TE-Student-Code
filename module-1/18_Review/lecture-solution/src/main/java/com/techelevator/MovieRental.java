@@ -8,7 +8,7 @@ public class MovieRental {
     // constants
     public static final String VHS = "VHS";
     public static final String DVD = "DVD";
-    public static final String BLURAY = "BLURAY";
+    public static final String BLURAY = "Blu-ray";
 
     private String title;
     private String format;
