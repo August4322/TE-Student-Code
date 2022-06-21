@@ -84,9 +84,78 @@ VALUES	('Revachol Citizens Militia', 8),
 
 --INSERT 4 EVENTS
 INSERT INTO event(event_name, description, start_date, start_time, duration, event_member_amount)
-VALUES	('Precinct 41 Reunion', 'It is time for a reunion to see what the members have been up to.', '2022-01-05', '17:00', 60, 5),
-		('Revachol West Fashion Walk', 'Wear your finest to impress the locals', '2022-01-03', '10:00', 120, 2),
-		('Discover The Pale at The Dolorian Church of Humanity', 'Discover the beyond', '2022-01-04', '15:00', 240, 6),
-		('Book Signing with Insulindian Phasmid', 'A once in a lifetime event', '2022-01-05', '16:00', 30, 3);
+VALUES	('Precinct 41 Reunion', 'It is time for a reunion to see what the members have been up to.', '2022-01-05', '17:00', 60, 6),
+		('Revachol West Fashion Walk', 'Wear your finest to impress the locals', '2022-01-03', '10:00', 120, 1),
+		('Discover The Pale at The Dolorian Church of Humanity', 'Discover the beyond', '2022-01-04', '15:00', 240, 2),
+		('Book Signing with Insulindian Phasmid', 'A once in a lifetime event', '2022-01-05', '16:00', 30, 2);
+		
+--INSERT INTO GROUP_MEMBER
+--Revachol Citizens Militia
+INSERT INTO group_member(member_id, group_id)
+VALUES	((SELECT member_id FROM member WHERE last_name = 'Kitsuragi'), (SELECT group_id FROM groups WHERE group_name = 'Revachol Citizens Militia'));
+INSERT INTO group_member(member_id, group_id)
+VALUES	((SELECT member_id FROM member WHERE last_name = 'Du Bois'), (SELECT group_id FROM groups WHERE group_name = 'Revachol Citizens Militia'));
+INSERT INTO group_member(member_id, group_id)
+VALUES	((SELECT member_id FROM member WHERE last_name = 'Gottlieb'), (SELECT group_id FROM groups WHERE group_name = 'Revachol Citizens Militia'));
+INSERT INTO group_member(member_id, group_id)
+VALUES	((SELECT member_id FROM member WHERE last_name = 'Pidieu'), (SELECT group_id FROM groups WHERE group_name = 'Revachol Citizens Militia'));
+INSERT INTO group_member(member_id, group_id)
+VALUES	((SELECT member_id FROM member WHERE last_name = 'McLaine'), (SELECT group_id FROM groups WHERE group_name = 'Revachol Citizens Militia'));
+INSERT INTO group_member(member_id, group_id)
+VALUES	((SELECT member_id FROM member WHERE last_name = 'Torson'), (SELECT group_id FROM groups WHERE group_name = 'Revachol Citizens Militia'));
+INSERT INTO group_member(member_id, group_id)
+VALUES	((SELECT member_id FROM member WHERE last_name = 'Heidelstam'), (SELECT group_id FROM groups WHERE group_name = 'Revachol Citizens Militia'));
+INSERT INTO group_member(member_id, group_id)
+VALUES	((SELECT member_id FROM member WHERE last_name = 'DeMettrie'), (SELECT group_id FROM groups WHERE group_name = 'Revachol Citizens Militia'));
+
+--Whirling-in-Rags
+INSERT INTO group_member(member_id, group_id)
+VALUES	((SELECT member_id FROM member WHERE last_name = 'Kitsuragi'), (SELECT group_id FROM groups WHERE group_name = 'Whirling-in-Rags'));
+INSERT INTO group_member(member_id, group_id)
+VALUES	((SELECT member_id FROM member WHERE last_name = 'Du Bois'), (SELECT group_id FROM groups WHERE group_name = 'Whirling-in-Rags'));
+
+--Sea Fortress Church
+INSERT INTO group_member(member_id, group_id)
+VALUES	((SELECT member_id FROM member WHERE last_name = 'Kitsuragi'), (SELECT group_id FROM groups WHERE group_name = 'Sea Fortress Church'));
+INSERT INTO group_member(member_id, group_id)
+VALUES	((SELECT member_id FROM member WHERE last_name = 'Du Bois'), (SELECT group_id FROM groups WHERE group_name = 'Sea Fortress Church'));
+INSERT INTO group_member(member_id, group_id)
+VALUES	((SELECT member_id FROM member WHERE last_name = 'McLaine'), (SELECT group_id FROM groups WHERE group_name = 'Sea Fortress Church'));
+INSERT INTO group_member(member_id, group_id)
+VALUES	((SELECT member_id FROM member WHERE last_name = 'Torson'), (SELECT group_id FROM groups WHERE group_name = 'Sea Fortress Church'));
+INSERT INTO group_member(member_id, group_id)
+VALUES	((SELECT member_id FROM member WHERE last_name = 'Heidelstam'), (SELECT group_id FROM groups WHERE group_name = 'Sea Fortress Church'));
+
+
+--INSERT INTO EVENT_MEMBER
+--Precinct 41 Reunion
+INSERT INTO event_member(member_id, event_id)
+VALUES	((SELECT member_id FROM member WHERE last_name = 'Du Bois'), (SELECT event_id FROM event WHERE event_name = 'Precinct 41 Reunion'));
+INSERT INTO event_member(member_id, event_id)
+VALUES	((SELECT member_id FROM member WHERE last_name = 'Gottlieb'), (SELECT event_id FROM event WHERE event_name = 'Precinct 41 Reunion'));
+INSERT INTO event_member(member_id, event_id)
+VALUES	((SELECT member_id FROM member WHERE last_name = 'Pidieu'), (SELECT event_id FROM event WHERE event_name = 'Precinct 41 Reunion'));
+INSERT INTO event_member(member_id, event_id)
+VALUES	((SELECT member_id FROM member WHERE last_name = 'McLaine'), (SELECT event_id FROM event WHERE event_name = 'Precinct 41 Reunion'));
+INSERT INTO event_member(member_id, event_id)
+VALUES	((SELECT member_id FROM member WHERE last_name = 'Torson'), (SELECT event_id FROM event WHERE event_name = 'Precinct 41 Reunion'));
+INSERT INTO event_member(member_id, event_id)
+VALUES	((SELECT member_id FROM member WHERE last_name = 'Heidelstam'), (SELECT event_id FROM event WHERE event_name = 'Precinct 41 Reunion'));
+
+--Revachol West Fashion Walk
+INSERT INTO event_member(member_id, event_id)
+VALUES	((SELECT member_id FROM member WHERE last_name = 'Du Bois'), (SELECT event_id FROM event WHERE event_name = 'Revachol West Fashion Walk'));
+
+--Discover The Pale at The Dolorian Church of Humanity
+INSERT INTO event_member(member_id, event_id)
+VALUES	((SELECT member_id FROM member WHERE last_name = 'Kitsuragi'), (SELECT event_id FROM event WHERE event_name = 'Discover The Pale at The Dolorian Church of Humanity'));
+INSERT INTO event_member(member_id, event_id)
+VALUES	((SELECT member_id FROM member WHERE last_name = 'Du Bois'), (SELECT event_id FROM event WHERE event_name = 'Discover The Pale at The Dolorian Church of Humanity'));
+
+--Book Signing with Insulindian Phasmid
+INSERT INTO event_member(member_id, event_id)
+VALUES	((SELECT member_id FROM member WHERE last_name = 'Kitsuragi'), (SELECT event_id FROM event WHERE event_name = 'Book Signing with Insulindian Phasmid'));
+INSERT INTO event_member(member_id, event_id)
+VALUES	((SELECT member_id FROM member WHERE last_name = 'Du Bois'), (SELECT event_id FROM event WHERE event_name = 'Book Signing with Insulindian Phasmid'));
 
 COMMIT;
