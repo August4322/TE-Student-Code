@@ -79,7 +79,7 @@ public class JdbcParkDao implements ParkDao {
         //If you don't do step 1 you probably won't do step 4
 
         //STEP 2: Write out the SQL you want to execute and save it to a string
-        String sql = "INSERT INTO park (park_id, park_name, date_established, area, has_camping) " +
+        String sql = "INSERT INTO park (park_name, date_established, area, has_camping) " +
                      "VALUES (?, ?, ?, ?) RETURNING park_id;";
 
         //STEP 3: Send the SQL to the database and then store the results if necessary
@@ -148,15 +148,29 @@ public class JdbcParkDao implements ParkDao {
     @Override
     public void addParkToState(int parkId, String stateAbbreviation) {
 
+        //STEP 2: Write out the SQL you want to execute and save it to a string
+        String sql = "INSERT INTO park_state(park_id, state_abbreviation) " +
+                     "VALUES (?, ?);";
 
+        //STEP 3: Send the SQL to the database and then store the results if necessary
+        //          -If we expect multiple rows / columns coming back (spreadsheet) then use jdbcTemplate.queryForRowSet
+        //          -If we want only one result, we can use jdbcTemplate.queryForObject
+        //          -If we do an update/delete, we use jdbcTemplate.update
+        jdbcTemplate.update(sql, parkId, stateAbbreviation);
 
     }
 
     @Override
     public void removeParkFromState(int parkId, String stateAbbreviation) {
 
+        //STEP 2: Write out the SQL you want to execute and save it to a string
+        String sql = "DELETE FROM park_state WHERE park_id = ? AND state_abbreviation = ?;";
 
-
+        //STEP 3: Send the SQL to the database and then store the results if necessary
+        //          -If we expect multiple rows / columns coming back (spreadsheet) then use jdbcTemplate.queryForRowSet
+        //          -If we want only one result, we can use jdbcTemplate.queryForObject
+        //          -If we do an update/delete, we use jdbcTemplate.update
+        jdbcTemplate.update(sql, parkId, stateAbbreviation);
 
     }
 

@@ -23,58 +23,118 @@ public class JdbcEmployeeDao implements EmployeeDao {
 	public List<Employee> getAllEmployees() {
 
 		//STEP 1: Declare the variable you want to return
-		List<Department> departments = new ArrayList<>();
+		List<Employee> employees = new ArrayList<>();
 
 		//STEP 2: Write out the SQL you want to execute and save it to a string
-		String sql = "SELECT department_id, name " +
-				"FROM department;";
+		String sql = "SELECT employee_id, department_id, first_name, last_name, birth_date, hire_date " +
+					 "FROM employee;";
 
 		//STEP 3: Send the SQL to the database and then store the results if necessary
 		SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
 
 		//STEP 4: If we have results and need to transfer them to objects, do that here
 		while (results.next()) {
-			departments.add(mapRowToEmployee(results));
+			employees.add(mapRowToEmployee(results));
 		}
 
 		//STEP 5: Return the result if necessary
-		return departments;
+		return employees;
 	}
 
 	@Override
 	public List<Employee> searchEmployeesByName(String firstNameSearch, String lastNameSearch) {
 
+		//STEP 1: Declare the variable you want to return
+		List<Employee> employee = new ArrayList<>();
 
+		//STEP 2: Write out the SQL you want to execute and save it to a string
+		String sql = "SELECT employee_id, department_id, first_name, last_name, birth_date, hire_date " +
+					 "FROM employee " +
+					 "WHERE first_name ILIKE ? AND last_name ILIKE ?;";
 
-		return List.of(new Employee());
+		//STEP 3: Send the SQL to the database and then store the results if necessary
+		String firstNameSearchWithWildcards = "%" + firstNameSearch + "%";
+		String lastNameSearchWithWildcards = "%" + lastNameSearch + "%";
+		SqlRowSet results = jdbcTemplate.queryForRowSet(sql, firstNameSearchWithWildcards, lastNameSearchWithWildcards);
+
+		//STEP 4: If we have results and need to transfer them to objects, do that here
+		while (results.next()) {
+			employee.add(mapRowToEmployee(results));
+		}
+
+		//STEP 5: Return the result if necessary
+		return employee;
 	}
 
 	@Override
 	public List<Employee> getEmployeesByProjectId(int projectId) {
 
+		//STEP 1: Declare the variable you want to return
+		List<Employee> employees = new ArrayList<>();
 
+		//STEP 2: Write out the SQL you want to execute and save it to a string
+		String sql = "SELECT employee.employee_id, department_id, first_name, last_name, birth_date, hire_date " +
+					 "FROM employee " +
+					 "JOIN project_employee ON employee.employee_id = project_employee.employee_id " +
+					 "JOIN project ON project_employee.project_id = project.project_id " +
+					 "WHERE project.project_id = ?;";
 
-		return new ArrayList<>();
+		//STEP 3: Send the SQL to the database and then store the results if necessary
+		SqlRowSet results = jdbcTemplate.queryForRowSet(sql, projectId);
+
+		//STEP 4: If we have results and need to transfer them to objects, do that here
+		while (results.next()) {
+			employees.add(mapRowToEmployee(results));
+		}
+
+		//STEP 5: Return the result if necessary
+		return employees;
 	}
 
 	@Override
 	public void addEmployeeToProject(int projectId, int employeeId) {
 
+		//STEP 2: Write out the SQL you want to execute and save it to a string
+		String sql = "INSERT INTO project_employee(project_id, employee_id) " +
+					 "VALUES (?, ?);";
+
+		//STEP 3: Send the SQL to the database and then store the results if necessary
+		jdbcTemplate.update(sql, projectId, employeeId);
 
 	}
 
 	@Override
 	public void removeEmployeeFromProject(int projectId, int employeeId) {
 
+		//STEP 2: Write out the SQL you want to execute and save it to a string
+		String sql = "DELETE FROM project_employee WHERE project_id = ? AND employee_id = ?;";
+
+		//STEP 3: Send the SQL to the database and then store the results if necessary
+		jdbcTemplate.update(sql, projectId, employeeId);
 
 	}
 
 	@Override
 	public List<Employee> getEmployeesWithoutProjects() {
+		//STEP 1: Declare the variable you want to return
+		List<Employee> employees = new ArrayList<>();
 
+		//STEP 2: Write out the SQL you want to execute and save it to a string
+		String sql = "SELECT employee.employee_id, department_id, first_name, last_name, birth_date, hire_date, project_employee.project_id " +
+					 "FROM employee " +
+					 "LEFT JOIN project_employee ON employee.employee_id = project_employee.employee_id " +
+					 "WHERE project_employee.project_id IS NULL;";
 
+		//STEP 3: Send the SQL to the database and then store the results if necessary
+		SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
 
-		return new ArrayList<>();
+		//STEP 4: If we have results and need to transfer them to objects, do that here
+		while (results.next()) {
+			employees.add(mapRowToEmployee(results));
+		}
+
+		//STEP 5: Return the result if necessary
+		return employees;
 	}
 
 	private Employee mapRowToEmployee(SqlRowSet rowSet) {

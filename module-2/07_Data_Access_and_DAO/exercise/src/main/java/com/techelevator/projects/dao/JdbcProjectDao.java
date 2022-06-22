@@ -68,7 +68,7 @@ public class JdbcProjectDao implements ProjectDao {
 
 		//STEP 2: Write out the SQL you want to execute and save it to a string
 		String sql = "INSERT INTO project (name, from_date, to_date) " +
-				"VALUES (?, ?, ?) RETURNING project_id;";
+					 "VALUES (?, ?, ?) RETURNING project_id;";
 
 		//STEP 3: Send the SQL to the database and then store the results if necessary
 		Integer newId = jdbcTemplate.queryForObject(sql, Integer.class,
