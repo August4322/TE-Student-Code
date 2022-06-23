@@ -10,8 +10,6 @@ public interface CityDao {
 
     List<City> getCitiesByState(String stateAbbreviation);
 
-    List<City> getCitiesByStateName(String name);
-
     City createCity(City city);
 
     void updateCity(City city);

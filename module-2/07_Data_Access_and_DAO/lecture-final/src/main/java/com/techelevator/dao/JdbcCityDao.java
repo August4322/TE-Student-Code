@@ -10,6 +10,26 @@ import java.util.List;
 
 public class JdbcCityDao implements CityDao {
 
+    /*
+    // STEP 1 - Declare whatever variable you want to return
+
+
+        // STEP 2 - Write out the SQL we want to execute and save it to a string
+        String sql = "";
+
+        // STEP 3 - Send the SQL to the database and then store the results if necessary
+        //         a) If we expect multiple rows or columns coming back (a spreadsheet) then we use jdbcTemplate.queryForRowSet
+        //         b) If we want only one result (one row, one column - literally just one thing), we can use jdbcTemplate.queryForObject
+        //         c) If we are doing an update or delete, we use jdbcTemplate.update
+
+
+        // STEP 4 - If we have results and need to transfer them to objects, do that here
+
+
+        // STEP 5 - Return the result if necessary
+     */
+
+
     private final JdbcTemplate jdbcTemplate;
 
     public JdbcCityDao(DataSource dataSource) {
@@ -28,8 +48,8 @@ public class JdbcCityDao implements CityDao {
                      "WHERE city_id = ?;";
 
         // STEP 3 - Send the SQL to the database and then store the results if necessary
-        //         a) If we expect multiple rows coming back (a spreadsheet) then we use jdbcTemplate.queryForRowSet
-        //         b) If we want only one result, we can use jdbcTemplate.queryForObject
+        //         a) If we expect multiple rows or columns coming back (a spreadsheet) then we use jdbcTemplate.queryForRowSet
+        //         b) If we want only one result (one row, one column - literally just one thing), we can use jdbcTemplate.queryForObject
         //         c) If we are doing an update or delete, we use jdbcTemplate.update
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, cityId);
 
@@ -65,6 +85,36 @@ public class JdbcCityDao implements CityDao {
     }
 
     @Override
+    public List<City> getCitiesByStateName(String name) {
+
+        // STEP 1 - Declare whatever variable you want to return
+        List<City> cities = new ArrayList<City>();
+
+        // STEP 2 - Write out the SQL we want to execute and save it to a string
+        String sql = "SELECT city_id, city_name, city.state_abbreviation, city.population, city.area " +
+                        "FROM city " +
+                        "JOIN state ON city.state_abbreviation = state.state_abbreviation " +
+                        "WHERE state_name ILIKE ?;"; // USE ILIKE INSTEAD OF LIKE IN JAVA !!!
+
+        // STEP 3 - Send the SQL to the database and then store the results if necessary
+        //         a) If we expect multiple rows or columns coming back (a spreadsheet) then we use jdbcTemplate.queryForRowSet
+        //         b) If we want only one result (one row, one column - literally just one thing), we can use jdbcTemplate.queryForObject
+        //         c) If we are doing an update or delete, we use jdbcTemplate.update
+        String nameWithWildcards = "%" + name + "%";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, nameWithWildcards);
+
+        // STEP 4 - If we have results and need to transfer them to objects, do that here
+        while(results.next()){
+            City city = mapRowToCity(results);
+            cities.add(city);
+        }
+
+        // STEP 5 - Return the result if necessary
+        return cities;
+
+    }
+
+    @Override
     public City createCity(City city) {
         // Step 1 - create the data type to return
         // We can normally skip this for creates
@@ -72,6 +122,7 @@ public class JdbcCityDao implements CityDao {
         // Step 2 - SQL as a string
         String sql = "INSERT INTO city (city_name, state_abbreviation, population, area) " +
                      "VALUES (?, ?, ?, ?) RETURNING city_id;";
+
 
         // STEP 3 - Send the SQL to the database and then store the results if necessary
         //         a) If we expect multiple rows coming back (a spreadsheet) then we use jdbcTemplate.queryForRowSet
@@ -115,8 +166,13 @@ public class JdbcCityDao implements CityDao {
 
     private City mapRowToCity(SqlRowSet rowSet) {
         City city = new City();
-        city.setCityId(rowSet.getInt("city_id"));
+
+        int id = rowSet.getInt("city_id");
+        city.setCityId(id);
+
+
         city.setCityName(rowSet.getString("city_name"));
+
         city.setStateAbbreviation(rowSet.getString("state_abbreviation"));
         city.setPopulation(rowSet.getInt("population"));
         city.setArea(rowSet.getDouble("area"));

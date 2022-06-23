@@ -265,7 +265,7 @@ public class USCitiesAndParksCLI {
         while (cities.size() == 0) {
             System.out.println("What state is the city in?");
             State state = promptForState();
-            cities = cityDao.getCitiesByState(state.getStateAbbreviation());
+            cities = cityDao.getCitiesByStateName("Oh");
             if (cities.size() == 0) {
                 displayError("No cities in selected state.");
             }
