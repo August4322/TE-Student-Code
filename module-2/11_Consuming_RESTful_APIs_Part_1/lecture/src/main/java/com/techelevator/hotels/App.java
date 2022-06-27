@@ -1,5 +1,8 @@
 package com.techelevator.hotels;
 
+import com.techelevator.hotels.model.Hotel;
+import com.techelevator.hotels.model.PictureOfTheDay;
+import com.techelevator.hotels.model.Review;
 import com.techelevator.hotels.services.ConsoleService;
 import com.techelevator.hotels.services.HotelService;
 
@@ -20,17 +23,34 @@ public class App {
             consoleService.printMainMenu();
             menuSelection = consoleService.promptForMenuSelection();
             if (menuSelection == 1) {
-                System.out.println("Not implemented");
+                Hotel[] hotels = hotelService.listHotels();
+                for(Hotel hotel : hotels) {
+                    System.out.println(hotel.toString());
+                }
             } else if (menuSelection == 2) {
-                System.out.println("Not implemented");
+                Review[] reviews = hotelService.listReviews();
+                for(Review review : reviews) {
+                    System.out.println(review);
+                }
             } else if (menuSelection == 3) {
-                System.out.println("Not implemented");
+                Hotel hotel = hotelService.getHotelById(1);
+                System.out.println(hotel);
             } else if (menuSelection == 4) {
-                System.out.println("Not implemented");
+                Review[] reviews = hotelService.getReviewsByHotelId(1);
+                for(Review review : reviews) {
+                    System.out.println(review);
+                }
             } else if (menuSelection == 5) {
-                System.out.println("Not implemented");
+                Hotel[] hotels = hotelService.getHotelsByStarRating(3);
+                for(Hotel hotel : hotels) {
+                    System.out.println(hotel);
+                }
             } else if (menuSelection == 6) {
-                System.out.println("Not implemented - Create a custom Web API query here");
+                PictureOfTheDay pic = hotelService.getWithCustomQuery();
+                System.out.println(pic.getTitle());
+                System.out.println(pic.getCopyright());
+                System.out.println(pic.getExplanation());
+                System.out.println(pic.getUrl());
             } else if (menuSelection == 0) {
                 continue;
             } else {

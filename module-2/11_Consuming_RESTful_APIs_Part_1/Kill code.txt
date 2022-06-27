@@ -1,0 +1,2 @@
+For when a server is already running and throwing an error in the terminal:
+npx kill-port 3000
