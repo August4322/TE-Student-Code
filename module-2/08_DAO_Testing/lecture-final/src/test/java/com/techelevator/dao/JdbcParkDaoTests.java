@@ -188,7 +188,7 @@ public class JdbcParkDaoTests extends BaseDaoTests {
     public void park_added_to_state_is_in_list_of_parks_by_state() {
 
         Park createdPark = sut.createPark(testPark);
-        sut.addParkToState(createdPark.getParkId(), "AA");
+        sut.addParkToState(createdPark.getParkId(), "ZZ");
 
         List<Park> getStateParks = sut.getParksByState("AA");
 
