@@ -5,10 +5,13 @@ import com.techelevator.reservations.dao.MemoryHotelDao;
 import com.techelevator.reservations.dao.MemoryReservationDao;
 import com.techelevator.reservations.dao.ReservationDao;
 import com.techelevator.reservations.model.Hotel;
+import com.techelevator.reservations.model.Reservation;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
+@RestController
 public class HotelController {
 
     private HotelDao hotelDao;
@@ -40,4 +43,44 @@ public class HotelController {
         return hotelDao.get(id);
     }
 
+    @RequestMapping(path = "/reservations", method = RequestMethod.GET)
+    public List<Reservation> listReservations() {
+        return reservationDao.findAll();
+    }
+
+    @RequestMapping(path = "/reservations/{id}", method = RequestMethod.GET)
+    public Reservation findReservationById (@PathVariable int id) {
+        return reservationDao.get(id);
+    }
+
+    @RequestMapping(path = "/hotels/{hotelId}/reservations", method = RequestMethod.GET)
+    public List<Reservation> findReservationsByHotel (@PathVariable int hotelId) {
+        return reservationDao.findByHotel(hotelId);
+    }
+
+    @RequestMapping(path = "/reservations", method = RequestMethod.POST)
+    public Reservation newReservation(@RequestBody Reservation reservation) {
+        return reservationDao.create(reservation, reservation.getHotelID());
+    }
+
+    //    /hotels/filter?state=OH&city=Columbus
+    @RequestMapping(path = "/hotels/filter", method = RequestMethod.GET)
+    public List<Hotel> filterByStateAndCity (@RequestParam String state, @RequestParam(required = false) String city) {
+
+        List<Hotel> allHotels = hotelDao.list();
+        List<Hotel> filteredHotels = new ArrayList<>();
+
+        for(Hotel hotel : allHotels) {
+            if (city != null) {
+                if (hotel.getAddress().getCity().equalsIgnoreCase(city)) {
+                    filteredHotels.add(hotel);
+                }
+            } else {
+                if (hotel.getAddress().getCity().equalsIgnoreCase(state)) {
+                    filteredHotels.add(hotel);
+                }
+            }
+        }
+        return filteredHotels;
+    }
 }
