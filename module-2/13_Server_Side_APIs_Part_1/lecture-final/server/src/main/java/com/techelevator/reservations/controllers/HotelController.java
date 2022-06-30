@@ -66,15 +66,15 @@ public class HotelController {
 
     //  /hotels/filter?state=OH&city=Columbus
     @RequestMapping(path="/hotels/filter", method=RequestMethod.GET)
-    public List<Hotel> filterByStateAndCity(@RequestParam String state, @RequestParam(required=false) String city) {
+    public List<Hotel> filterByStateAndCity(@RequestParam String state, @RequestParam(value="city", defaultValue = "Morbtown", required=false) String cityToSearch) {
 
         List<Hotel> allHotels = hotelDao.list();
         List<Hotel> filteredHotels = new ArrayList<>();
 
         for(Hotel hotel : allHotels) {
 
-            if(city != null) {
-                if(hotel.getAddress().getCity().equalsIgnoreCase(city)) {
+            if(cityToSearch != null) {
+                if(hotel.getAddress().getCity().equalsIgnoreCase(cityToSearch)) {
                     filteredHotels.add(hotel);
                 }
             } else {
