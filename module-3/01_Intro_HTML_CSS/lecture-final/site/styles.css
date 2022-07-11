@@ -1,0 +1,31 @@
+
+/*
+This is a comment
+*/
+img {
+    height:200px;
+    
+}
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+    font-size: 45px;
+    color: #3A6334;
+    border: solid black 1px;
+}
+
+th{
+    text-align: left;
+    background-color: gray;
+}
+
+#lunchSection{
+    font-style: italic;
+}
+
+.lunch {
+    color: red;
+}
