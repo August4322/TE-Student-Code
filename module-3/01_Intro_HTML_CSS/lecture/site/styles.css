@@ -1,0 +1,22 @@
+/*
+This is how one does a comment in css
+*/
+
+img {
+    height: 200px;
+    
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+    font-size: 32px;
+    color: #F0826A;
+}
+
+th {
+    text-align: left;
+    background-color: gainsboro;
+}

@@ -1,0 +1,36 @@
+body {
+    background-color: cadetblue;
+}
+
+header {
+    text-align: center;
+}
+
+img {
+    width: 400px;
+}
+
+div {
+    text-align: center;
+}
+
+h2 {
+    text-align: center;
+    text-decoration: underline;
+}
+
+table, th, td {
+    text-align: center;
+    border: 1px solid;
+    border-collapse: collapse;
+    padding: 15px;
+}
+
+#quotes {
+    font-style: italic;
+    text-align: center;
+}
+
+form {
+    background-color: cornsilk;
+}
