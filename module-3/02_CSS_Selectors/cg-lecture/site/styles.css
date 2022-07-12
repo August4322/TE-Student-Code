@@ -1,0 +1,125 @@
+/*Universal Selector - Select Everything */
+* {
+    box-sizing: border-box;
+}
+
+/*Select by id*/
+#catwoman {
+    background-color: darkslategray;
+}
+
+/*Select by class*/
+.marvel {
+    background-color: firebrick;
+}
+
+.dc {
+    background-color: forestgreen;
+}
+
+.movie-card {
+    border: solid black;
+    width: 300px;
+    height: 440px;
+}
+
+/*Select by tag*/
+img {
+    height: 200px;
+}
+
+/*pseudo selectors*/
+a:hover {
+    font-size: 30px;
+    color: white;
+}
+
+/*Select by attribute*/
+img[src="images/daredevil.jfif"] {
+    height: 250px;
+}
+
+/*Select by descendant*/
+div:last-child {
+    border-bottom: tomato;
+}
+
+/*Select by span*/
+body main div span {
+    background-color: goldenrod;
+}
+
+/*Block Model*/
+
+/*Block elements take up all the horizontal space like div*/
+
+/*Inline elements only take up the space they need and can sit next to 
+each other like span and img*/
+
+/*Spans are inline elements but if I want to control the width and height 
+I can give them a property of display: inline-block;*/
+span {
+    display: inline-block;
+    width: 40px;
+    height: 25px;
+}
+
+/*Also can override divs which are by default block elements to instead by
+inline-block, so they go to the same line instead of taking up all the 
+space they can*/
+div {
+    display: inline-block;
+}
+
+/*another way to make things stack nexgt to each other 
+will cover more in a later class*/
+main {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/*Box model */
+
+/*Cam add a border around each card
+    -margin = social-distance each element
+    -padding = space inside the border
+*/
+.movie-card {
+    border: solid black 1px;
+    border-radius: 5px;
+    width: 300px;
+    height: 440px;
+    margin: 10px;
+    padding: 10px;
+}
+
+/* Flow */
+blockquote {
+    /*Normal Flow*/
+    /*position: static;*/
+
+    /*Relative - Relative to where it would've been*/
+    /*position: relative;
+    left: 200px; */
+
+    /*Absolute - Specific spot on page*/
+    /*position: absolute;
+    left: 200px;*/
+
+    /*Fixed - relative to browser window*/
+    /*position: fixed;
+    left: 200px;*/
+
+
+    background-color: coral;
+    border: solid black 1px;
+    font-size: 32px;
+    padding: 20px;
+    width: 200px;
+}
+
+/*size*/
+/*
+px
+rem, em, ram, or % - relative sizes for different devices
+*/
