@@ -1,0 +1,130 @@
+/* Universal selector - select everything*/
+* {
+    box-sizing: border-box;
+}
+
+/* Select by id */
+#catwoman {
+    background-color: purple;
+}
+
+/* Select by class */
+.marvel {
+    background-color: pink;
+}
+/* don't use important if you can help it */
+.dc{
+   /* background-color:blue !important; */
+   background-color:lightblue;
+}
+
+
+/*select by tag */
+img {
+    height: 200px;
+}
+
+/*pseudo selector */
+a:hover {
+    font-size: 30px;
+    color:white;
+}
+div:hover {
+    width: 350px;
+    height: 450px;
+    border-color: yellow;
+}
+/*select by attribute */
+img[src="images/daredevil.jfif"] {
+    height: 250px;
+}
+
+/* descendant combinator */
+div:last-child {
+    border-bottom-color: orange;
+}
+
+body main div:nth-child(even) span {
+    background-color: yellow;
+}
+body main div:nth-child(odd) span {
+    background-color: green;
+}
+
+/* Block Model */
+
+/* Block elements take up all horizontal space,
+like div */
+
+/* Inline elements only take up space they need
+and can sit next to each other, like span and img*/
+
+/*Spans are inline elements, but if I want to control 
+their width and height, I can give them a property
+of display: inline-block; */
+span {
+    display: inline-block; 
+    width:40px;
+    height:25px;
+}
+
+/* I can also override my divs which are by default
+block elements to instead be inline-block, so they
+go to the same line instead of taking up all the horizontal
+space they can */
+div {
+    display: inline-block;
+}
+
+/* another way to make things stack next to each other inline
+- we will cover this in a later class */
+main {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* Box model */
+
+/* I can add a border to each of the movie cards
+    margin - social distancing, the space 
+    surrounding the element outside the border
+    padding - the space inside the border
+
+*/
+.movie-card {
+    border: solid black 1px;
+    border-radius: 10px;
+    width: 300px;
+    height:440px;
+    margin:15px;
+    padding:10px;
+}
+
+/* Flow */
+blockquote {
+    /* Normal flow */
+    /*position: static; */
+
+    /*Relative - relative to where it would have been normally*/
+   /* position: relative;
+    left:200px;
+    top: 200px; */
+
+    /*Absolute - specific spot on page, does not scrolls, outside of the normal flow*/
+    /*position:absolute;
+    left:200px;*/
+
+    /*Fixed - relative to browser window*/
+   /* position:fixed;
+    left:200px;
+    top:50px; */
+    /*If I want to stretch it*/
+   /* bottom:50px; */
+
+    background-color: yellow;
+    border: solid orange 1px;
+    font-size: 32px;
+    padding:20px;
+    width: 50%; /*can use em, rem, or percent to get relative sizes per device instead of px*/
+    font-style: italic;
+}
