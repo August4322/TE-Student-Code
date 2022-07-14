@@ -145,7 +145,7 @@ header img {
 
 @media screen and (max-width: 450px) {
     #main-grid {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr;
         grid-template-areas: 
         "headline"
         "student-picture"
