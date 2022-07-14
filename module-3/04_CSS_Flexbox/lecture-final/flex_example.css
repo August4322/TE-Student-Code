@@ -1,0 +1,58 @@
+body{
+    width:95vw;
+    height: 95vh;
+
+    display:flex;   
+    flex-direction:row; /* row, row-reverse, column, column-reverse*/ 
+    gap:10px;
+    flex-wrap: nowrap; /*nowrap, wrap, wrap-reverse */
+
+    justify-content: flex-start; /* when flex direction is a row, this manages how content is justified horizontally*/
+                             /* when flex direction is a column, it is vertical */
+                            /* flex-start, flex-end, center, space-around */
+
+
+    align-items: center; /* when flex direction is a row, this dictates where the items are vertically,
+                            when the flex direction is a column, this dictates where items are horizontally
+                            flex-start, flex-end, center, space-around */
+
+                            }
+
+
+div {
+    width:100px;
+    height:100px;
+    text-align:center;
+    font-size: 50px;
+    flex-grow:1; /*grow to fill all empty space*/
+    flex-shrink: 1; /*shrink to fit the space */
+}
+
+#div1 {
+    background-color: blue;
+   /* flex-basis: 50px; /*initial size*/ 
+   flex-shrink: 3; /*higher than 1 is a higher rate of how the extra space gets distributed*/
+   flex-grow: 3; /*higher than 1 is a higher rate of how much gets taken away*/
+    order: 1;
+}
+
+#div2 {
+    background-color: red;
+    order:1000;
+    
+}
+
+#div3 {
+    background-color: yellow;
+    order:-100;
+}
+
+#div4 {
+    background-color: green;
+}
+
+#div5 {
+    background-color: purple;
+    order:-1;
+
+}
