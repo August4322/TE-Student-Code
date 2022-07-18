@@ -10,8 +10,19 @@
  */
 function variables() {
   // Declares a variable where the value cannot be changed
+  const myName = "August";
+  console.log("My name is " + myName);
   // Declares a variable those value can be changed
+  let counter = 0;
+  console.log("My counter is " + counter);
+  counter++;
+  console.log(`My counter is ${counter}`); // ` is the tilde key not a normal ' !!!
   // Declares a variable that will always be an array
+  const weekdays = [
+    "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"
+  ];
+
+  console.table(weekdays);
 }
 
 /**
@@ -70,14 +81,26 @@ function objects() {
       "Milton Waddams",
       "Samir Nagheenanajar",
       "Michael Bolton"
-    ]
+    ],
+    toString: function() {
+      return this.firstName + " " + this.lastName;
+    }
   };
 
   // Log the object
-
+  console.log(person);
+  console.table(person);
   // Log the first and last name
-
+  console.log(person.toString());
   // Log each employee
+  //init ; condition ; how we increment
+  for(let i = 0; i < person.employees.length; i++) {
+    console.log(`Employee ${i+1} is ${person.employees[1]}`);
+  }
+
+  for(let employee of person.employees) {
+    console.log("Employee: " + employee);
+  }
 }
 
 /*
@@ -87,15 +110,20 @@ Function Overloading
 
 Function Overloading is not available in Javascript. If you declare a
 function with the same name, more than one time in a script file, the
-earlier ones are overriden and the most recent one will be used.
+earlier ones are overridden and the most recent one will be used.
 */
 
 function Add(num1, num2) {
+  alert("Add 1");
   return num1 + num2;
 }
 
 function Add(num1, num2, num3) {
+  if(num1 && num2 && num3) {
   return num1 + num2 + num3;
+  } else if (num1 && num2) {
+    return num1 + num2;
+  }
 }
 
 /*
