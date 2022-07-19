@@ -20,6 +20,15 @@
  * @returns {boolean} true if they are admitted
  */
 
+function isAdmitted(gpa, satScore = 0, recommendation = false) {
+    if (gpa > 4.0 || satScore > 1300 || (gpa >3.0 && recommendation === true) || (satScore > 1200 && recommendation === true)) {
+        return true;
+    } else {
+    return false;
+    }
+}
+
+
 /**
  * Write a function called useParameterToFilterArray that takes an anonymous
  * function and uses that in the `unfilteredArray` filter function. Return the result.
@@ -28,6 +37,13 @@
  * @returns {number[]} the filtered array
  */
 let unfilteredArray = [1, 2, 3, 4, 5, 6];
+
+function useParameterToFilterArray(filterFunction) {
+    return unfilteredArray.filter(filterFunction);
+}
+
+
+
 
 /**
  * Write a function called makeNumber that takes two strings
@@ -42,6 +58,15 @@ let unfilteredArray = [1, 2, 3, 4, 5, 6];
  * @returns {number} the resultant number
  */
 
+function makeNumber(first, second = '') {
+    //let number = first + second;
+    //const finalNum = Number(number);
+    //return finalNum;
+
+    return parseInt(first + second);
+}
+
+
 /**
  * Write a function called addAll that takes an unknown number of parameters
  * and adds all of them together. Return the sum.
@@ -50,11 +75,35 @@ let unfilteredArray = [1, 2, 3, 4, 5, 6];
  * @returns {number} the sum of all the parameters (or arguments)
  */
 
+function addAll() {
+    if (arguments.length) {
+        return Array.from(arguments).reduce(
+            (sum, currentValue) => {
+                return sum + currentValue;
+            }
+        );
+    } else {
+        return 0;
+    }
+}
+
+
+
 /*
  * Write and document a function called makeHappy that takes
  * an array and prepends 'Happy ' to the beginning of all the
  * words and returns them as a new array. Use the `map` function.
  */
+
+function makeHappy(value) {
+    let prependHappy = value.map( (value) => {
+      return "Happy " + value;
+    });
+  
+    return prependHappy;
+  }
+
+
 
 /*
  * Write and document a function called getFullAddressesOfProperties
@@ -74,6 +123,15 @@ let unfilteredArray = [1, 2, 3, 4, 5, 6];
  * Use `map` and an anonymous function.
  */
 
+ 
+function getFullAddressesOfProperties(association) {
+    const value = association.map( (address) => {
+      return address.streetNumber + " " + address.streetName + " " + address.streetType + " " + address.city + " " + address.state + " " + address.zip;
+    });
+    return value;
+ }   
+
+
 /** 
  * Write and document a function called findLargest that uses `forEach`
  * to find the largest element in an array.
@@ -89,6 +147,17 @@ let unfilteredArray = [1, 2, 3, 4, 5, 6];
  * @returns {number|string} the number or string that is largest
  **/
 
+ function findLargest(value) {
+    let largest = value[0];
+  
+     value.forEach(element => {
+       if (largest < element) {
+         largest = element;
+       }
+     });
+  
+     return largest;
+   }
 
 /*
  * CHALLENGE

@@ -27,6 +27,13 @@ function printToConsole(value) {
  * @param {number} firstParameter the first parameter to multiply
  * @param {number} secondParameter the second parameter to multiply
  */
+function multiplyTogether(param1, param2) {
+
+  console.log("Param1: " + param1);
+  console.log("Param2: " + param2);
+
+  return param1 * param2;
+}
 
 /**
  * This version makes sure that no parameters are ever missing. If
@@ -38,7 +45,13 @@ function printToConsole(value) {
  * @param {number} [firstParameter=0] the first parameter to multiply
  * @param {number} [secondParameter=0] the second parameter to multiply
  */
+ function multiplyTogetherWithDefaults(param1 = 0, param2 = 0) {
 
+  console.log("Param1: " + param1);
+  console.log("Param2: " + param2);
+
+  return param1 * param2;
+}
 
  
 /**
@@ -87,10 +100,107 @@ function scopeTest() {
   }
 }
 
+
+/** 
+*@param {String} name name of the person
+*@param {number} age age of the person
+*@param {array} listOfQuirks
+*@param {string} separator
+*/
+
+
 function createSentenceFromUser(name, age, listOfQuirks = [], separator = ', ') {
   let description = `${name} is currently ${age} years old. Their quirks are: `;
   return description + listOfQuirks.join(separator);
 }
+
+/**
+//NAMED FUNCTION
+function printName(name) {
+  console.log(name);
+}
+
+
+//ANONYMOUS FUNCTION
+(name) => {
+  console.log(name);
+}
+*/
+
+
+//I'm not really sure what's going on here
+/*
+function forEachExample() {
+  const myArray = [1,2,3,4,5];
+
+  myArray.forEach((name) => {
+    console.log(name);
+});
+*/
+
+function forEachExample() {
+  const myArray = [1,2,3,4,5];
+
+  myArray.forEach((num) => {
+    console.log(num);
+  });
+
+  myArray.forEach(printNum);
+}
+
+function printNum(num) {
+  console.log(num);
+}
+
+
+function mapExamples() {
+
+  //Example
+  const myArray = [1,2,3,4,5];
+
+  const myNewArray = myArray.map(
+    (x) => {
+      return x*2;
+    }
+  );
+
+  console.log(myNewArray);
+
+
+  //Other example
+  const myPersonList = [
+    {firstName: "August", middleName: "Nicole", lastName: "Newman"},
+    {firstName: "Josef", middleName: "Scott", lastName: "Widdifield"},
+    {firstName: "Matthew", middleName: "Allen", lastName: "Kocheiser"},
+  ];
+
+  console.log(myPersonList);
+
+  const names = myPersonList.map(
+    (x) => {
+      return x.firstName + " " + x.middleName + " " + x.lastName;
+    }
+  );
+
+  console.log(names);
+
+
+  //Other other example
+  const splitOutNames = names.map(
+    (name) => {
+      const splitOutName = name.split(" ");
+      return {
+        firstName: splitOutName[0],
+        middleName: splitOutName[1],
+        lastName: splitOutName[2]
+      };
+    }
+  );
+
+    console.log(splitOutNames);
+
+}
+
 
 /**
  * Takes an array and, using the power of anonymous functions, generates
@@ -100,7 +210,11 @@ function createSentenceFromUser(name, age, listOfQuirks = [], separator = ', ') 
  * @returns {number} sum of all the numbers
  */
 function sumAllNumbers(numbersToSum) {
-  return numbersToSum.reduce();
+  return numbersToSum.reduce(
+    (reducer, currentVal) => {
+      return reducer + currentVal;
+    }
+  );
 }
 
 /**
@@ -111,4 +225,11 @@ function sumAllNumbers(numbersToSum) {
  * @returns {number[]} a new array with only those numbers that are
  *   multiples of 3
  */
-function allDivisibleByThree(numbersToFilter) {}
+function allDivisibleByThree(numbersToFilter) {
+  return numbersToFilter.filter(
+    (x) => {
+      return x %3 === 0;
+    }
+  );
+
+}
