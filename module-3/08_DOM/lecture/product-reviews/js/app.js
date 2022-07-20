@@ -1,4 +1,4 @@
-const name = 'Cigar Parties for Dummies';
+const siteName = 'Cigar Parties for Dummies';
 const description = 'Host and plan the perfect cigar party for all of your squirrelly friends.';
 const reviews = [
   {
@@ -36,19 +36,69 @@ const reviews = [
  * Get our page page title by the id and the query the .name selector
  * once you have the element you can add the product name to the span.
  */
-function setPageTitle() {}
+function setPageTitle() {
+  const pageTitle = document.getElementById("page-title");
+  pageTitle.querySelector(".name").innerText = siteName;
+}
 
 /**
  * Add our product description to the page.
  */
-function setPageDescription() {}
+function setPageDescription() {
+  document.querySelector(".description").innerText = description;
+}
 
 /**
  * I will display all of the reviews on the page.
  * I will loop over the array of reviews and use some helper functions
  * to create the elements needed for our markup and add them to the DOM
  */
-function displayReviews() {}
+function displayReviews() {
+
+  const main = document.getElementById("main");
+  
+  reviews.forEach(
+    (review) => {
+
+      //Create the review container
+      const container = document.createElement("div");
+      container.setAttribute("class", "review");
+
+      //Add the review to the main div
+      main.insertAdjacentElement('beforeend', container);
+
+      //Add the h4 element "reviewer" to the container
+      const reviewerName = document.createElement("h4");
+      reviewerName.innerText = review.reviewer;
+      container.appendChild(reviewerName);
+
+      //Add the reviews
+      const rating = document.createElement("div");
+      rating.setAttribute("class", "rating");
+
+      //Add the star pictures
+      for (let i = 0; i < review.rating; i++) {
+        const starImg = document.createElement("img");
+        starImg.setAttribute("class", "ratingStar");
+        starImg.src = "img/star.png";
+        rating.appendChild(starImg);
+      }
+
+      container.appendChild(rating);
+
+      //Add the review title
+      const reviewTitle = document.createElement("h3");
+      reviewTitle.innerText = review.title;
+      container.appendChild(reviewTitle);
+
+      //Add the review text
+      const reviewText = document.createElement("p");
+      reviewText.innerText = review.review;
+      container.appendChild(reviewText);
+
+    }
+  );
+}
 
 /**
  * I will create a new h4 element with the name of the reviewer and append it to
