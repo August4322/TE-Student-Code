@@ -89,10 +89,10 @@ document.addEventListener('DOMContentLoaded', () => {
   })
 
   // get a reference to the decimal point button
-  const decPointButton = document.querySelector(".decimal")
+  const decimalPointButton = document.querySelector(".decimal")
   // add a click event listener to call the function clickNumber
   // the decimal point is part of the number so append it
-  decPointButton.addEventListener("click", clickNumber)
+  decimalPointButton.addEventListener("click", clickNumber)
 
   // get a reference to the all clear button
   const allClear = document.querySelector("button.all-clear")
