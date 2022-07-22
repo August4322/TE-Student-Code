@@ -36,3 +36,104 @@ function displayGroceries() {
     ul.appendChild(li);
   });
 }
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  setPageTitle();      
+  displayGroceries();
+  
+  const selectItem = document.querySelectorAll("li");
+  const selectCompleteAll = document.getElementById("toggleAll");
+
+  selectItem.forEach((item) => {
+    item.addEventListener('click', () => {
+      if(!item.classList.contains("completed")) {
+        item.classList.add("completed");
+        item.querySelector("i").classList.add("completed");
+      }
+    });
+    item.addEventListener('dblclick', () => {
+      if (item.classList.contains("completed")) {
+        item.classList.remove("completed");
+        item.querySelector("i").classList.remove("completed")
+      }
+    })
+  });
+
+  selectCompleteAll.addEventListener('click', () => {
+    if (allItemsIncomplete) {
+      selectItem.forEach((item) => {
+          allItemsIncomplete = false;
+          item.classList.add("completed");
+          item.querySelector("i").classList.add("completed");
+          selectCompleteAll.innerText = "Mark All Incomplete";
+        }
+      )} else {
+        selectItem.forEach((item) => {
+          allItemsIncomplete = true;
+          item.classList.remove("completed");
+          item.querySelector("i").classList.remove("completed");
+          selectCompleteAll.innerText = "Mark All Complete";
+        })
+      }
+  })
+
+
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+
+document.addEventListener('DOMContentLoaded', (event) => {
+  setPageTitle();
+  displayGroceries();
+
+  function markCompleted() {}
+  const groceryList = document.querySelectorAll("li")
+  const groceryItems = Array.from(list.children)
+  }
+  
+  groceryList.forEach((item) => {
+    item.addEventListener('click', (event) => {
+      if (allItemsIncomplete == false) {
+        continue;
+      } else if (allItemsIncomplete == true) {
+        item.setAttribute('class', 'completed')
+        item.querySelector('i').classList.add('completed')
+      }
+    });
+    item.addEventListener('dblclick', (event) => {
+      if (allItemsIncomplete == true) {
+        continue;
+      } else if (allItemsIncomplete == false) {
+        item.removeAttribute('class', 'completed')
+        item.querySelector('i').classList.remove('completed')
+      }
+    });
+  });
+})
+
+
+*/
