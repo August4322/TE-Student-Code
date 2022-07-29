@@ -1,0 +1,55 @@
+body{
+    background-image: url("http://localhost:8080/imgs/morbius.jpg");
+    background-repeat: no-repeat;
+    background-color: black;
+    background-size: cover;
+    height: 100vh;
+  }
+  
+  main{
+    margin-top: 25px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  
+  .cardContainer{
+    width: 250px;
+    height:450px;
+    background-color: darkred;
+  }
+  
+  .faceDown {
+    display: none !important;
+  }
+  
+  .card{
+    
+    width: 250px;
+    height: 450px;
+    border: solid 2px darkred;
+    border-radius: 5px;
+    background-color: white;
+    display:flex;
+    flex-direction: column;
+    text-align:center;
+    align-items: center;
+    justify-content: space-around;
+  }
+  
+  .title{
+    font-size: 30px;
+  }
+  
+  .cardImg{
+    width: 200px;
+  }
+  
+  .caption{
+    font-size:20px;
+    font-style: italic;
+  }
+  
+  .extra-bold{
+    font-weight: bold;
+  }
