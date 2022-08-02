@@ -233,8 +233,8 @@ export default {
     selectAll() {
       this.users.forEach(
         (x) => {
-          if (!this.selectedUserIDs.includes(x)) {
-          return this.selectedUserIDs.unshift(x);
+          if (!this.selectedUserIDs.includes(x.id)) {
+          return this.selectedUserIDs.unshift(x.id);
           } else {
             this.selectedUserIDs.splice(this.selectedUserIDs.indexOf(x));
           }
