@@ -24,12 +24,11 @@
         </tr>
       </tbody>
     </table>
-  </div>
+  </div> 
 </template>
 
 <script>
 import topicService from "@/services/TopicService.js";
-
 export default {
   name: "topic-list",
   methods: {
@@ -38,7 +37,14 @@ export default {
         this.$store.commit("SET_TOPICS", response.data);
       });
     },
-    deleteTopic(id) {}
+    deleteTopic(id) {
+      topicService.delete(id).then(
+        (response) => {
+          if (response.status === 200) {
+          this.getTopics();
+          }
+        })
+    }
   },
   created() {
     this.getTopics();
@@ -70,7 +76,6 @@ td {
 tbody tr:nth-child(even) {
   background-color: #f2f2f2;
 }
-
 .topic-list a:link,
 .topic-list a:visited {
   color: blue;

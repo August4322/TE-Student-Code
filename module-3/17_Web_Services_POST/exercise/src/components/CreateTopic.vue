@@ -5,14 +5,13 @@
       <input type="text" v-model="topic.title" />
     </div>
     <div class="actions">
-      <button type="submit" v-on:click="saveTopic()">Save Document</button>
+        <button type="submit" v-on:click="saveTopic()">Save Document</button>
     </div>
   </form>
 </template>
 
 <script>
 import topicService from "../services/TopicService";
-
 export default {
   name: "create-topic",
   data() {
@@ -24,7 +23,14 @@ export default {
     };
   },
   methods: {
-    saveTopic() {}
+    saveTopic() {
+      topicService.add(this.topic).then(
+        (response) => {
+        if (response.status === 201) {
+            this.$router.push("/");
+          }
+      })
+    }
   }
 };
 </script>
